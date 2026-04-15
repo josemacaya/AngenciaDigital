@@ -5,5 +5,5 @@ window.onload = function() {
 
 // Función para cambiar el color del botón al hacer clic
 function saludar() {
-    alert("¡Gracias por contactar a Los Tres Ejes! Pronto nos comunicaremos contigo.");
+    alert("¡Gracias por contactar a Los Tres Ejes Web! Pronto nos comunicaremos contigo.");
 } 
