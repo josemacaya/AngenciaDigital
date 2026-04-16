@@ -1,11 +1,18 @@
-const express = require('express');
+const https = require('https');
+const fs = require('fs');
+const express = require('express'); // <--- AGREGA ESTA LÍNEA EXACTA
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+
 
 const app = express();
 const PORT = 3000;
 const SECRET_KEY = "mi_clave_secreta_aiep"; // Clave para firmar los tokens
-
+// LECTURA DE CERTIFICADOS (Paso síncrono obligatorio)
+const credenciales = {
+    key: fs.readFileSync('llave-privada.key'),
+    cert: fs.readFileSync('certificado.crt')
+};
 // Middlewares necesarios
 app.use(express.json()); // Permite recibir datos en formato JSON
 app.use(cookieParser()); // Permite manejar las Cookies en el servidor
@@ -40,7 +47,12 @@ app.get('/', (req, res) => {
     res.send('Servidor Backend AIEP - Activo');
 });
 
-// Iniciamos el servidor
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+// INICIAR EL SERVIDOR SEGURO HTTPS (Punto 4 del temario)
+const PUERTO_SSL = 4433;
+
+https.createServer(credenciales, app).listen(PUERTO_SSL, () => {
+    console.log('================================================');
+    console.log(`🚀 SERVIDOR SEGURO CORRIENDO EN: https://localhost:${PUERTO_SSL}`);
+    console.log('   Grupo: Luciano, Alex y Naethan');
+    console.log('================================================');
+});    
