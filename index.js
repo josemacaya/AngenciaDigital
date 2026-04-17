@@ -27,14 +27,24 @@ const usuarios = [
 // 2. RUTA DE LOGIN (Pégalo aquí)
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
-    const usuarioValido = usuarios.find(u => u.username === username && u.password === password);
+
+    // ✅ Validación (mejora)
+    if (!username || !password) {
+        return res.status(400).json({ mensaje: 'Faltan datos' });
+    }
+
+    const usuarioValido = usuarios.find(
+        u => u.username === username && u.password === password
+    );
 
     if (usuarioValido) {
         const token = jwt.sign({ user: username }, SECRET_KEY, { expiresIn: '1h' });
+
         res.cookie('token_aiep', token, {
             httpOnly: true,
             maxAge: 3600000 
         });
+
         return res.json({ mensaje: 'Login exitoso', token });
     } else {
         return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
@@ -59,3 +69,4 @@ https.createServer(credenciales, app).listen(PUERTO_SSL, () => {
 // Commit 1: Certificados
 // Commit 2: Configuración HTTPS
 // Commit 4: Verificacón de inicio de servidor exitoso
+// Commit 5: Mejora en validación de datos en login
