@@ -1,4 +1,34 @@
-node_modules
+# Dependencias
+node_modules/
+
+# Archivos de entorno (MUY importante)
+.env
+.env.*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Build / producción
+dist/
+build/
+
+# Archivos temporales
+tmp/
+temp/
+
+# Certificados y llaves (seguridad)
 *.key
 *.crt
-# Seguridad: protección de llaves SSL
+*.pem
+
+# IDE / Editor
+.vscode/
+.idea/
