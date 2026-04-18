@@ -66,7 +66,7 @@ https.createServer(credenciales, app).listen(PUERTO_SSL, () => {
     console.log('   Grupo: Luciano, Alex y Naethan');
     console.log('================================================');
 });    
-// Commit 1: Certificados
-// Commit 2: Configuración HTTPS
-// Commit 4: Verificacón de inicio de servidor exitoso
-// Commit 5: Mejora en validación de datos en login
+// IMPORTANTE:
+// Los certificados SSL (.key y .crt) se mantienen fuera del repositorio
+// por razones de seguridad. Estos archivos están definidos en .gitignore
+// y solo deben existir de forma local en el servidor.
