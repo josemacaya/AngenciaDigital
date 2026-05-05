@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportyStyle - Proyecto Final AIEP</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #1a1a1a; color: white; margin: 0; text-align: center; }
+        .header-app { background: #e74c3c; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        .productos-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+        .card { background: white; color: #333; padding: 15px; border-radius: 12px; width: 200px; text-align: center; }
+        .card img { width: 100%; border-radius: 8px; height: 140px; object-fit: cover; }
+        .carrito-box { background: white; color: #1a2a4d; padding: 20px; border-radius: 12px; margin-top: 30px; border: 4px solid #e74c3c; }
+        .btn-rojo { background: #c0392b; color: white; border: none; padding: 12px 24px; cursor: pointer; border-radius: 6px; font-weight: bold; margin-top: 10px; }
+        .hidden { display: none !important; }
+        input { padding: 12px; width: 90%; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header class="header-app">
+        <h1>SPORTYSTYLE</h1>
+        <div style="margin-top: 15px;">
+            <span id="welcome-msg" style="font-weight: bold; margin-right: 15px;"></span>
+            <button id="btn-login" class="btn-rojo" onclick="login()">ENTRAR</button>
+            <button id="btn-logout" class="btn-rojo hidden" onclick="logout()">SALIR</button>
+        </div>
+    </header>
+
+    <main id="vista-tienda" class="container">
+        <h2>PRODUCTOS DISPONIBLES</h2>
+        <div class="productos-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300" alt="Polera">
+                <h3>Polera Pro</h3><p><strong>$15.990</strong></p>
+                <button class="btn-rojo" style="width:100%" onclick="agregarAlCarrito('Polera Pro', 15990)">COMPRAR</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300" alt="Mochila">
+                <h3>Mochila Tech</h3><p><strong>$12.990</strong></p>
+                <button class="btn-rojo" style="width:100%" onclick="agregarAlCarrito('Mochila Tech', 12990)">COMPRAR</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300" alt="Pantalon">
+                <h3>Pantalón Fit</h3><p><strong>$24.990</strong></p>
+                <button class="btn-rojo" style="width:100%" onclick="agregarAlCarrito('Pantalón Fit', 24990)">COMPRAR</button>
+            </div>
+        </div>
+
+        <section class="carrito-box">
+            <h3 style="color:#333">🛒 MI CARRITO</h3>
+            <div id="lista-items" style="color:#333">Tu carrito está vacío</div>
+            <p style="font-size: 1.5rem; color: #1a2a4d;"><strong>TOTAL: $<span id="total-monto">0</span></strong></p>
+            <button class="btn-rojo" style="width: 100%; padding: 18px;" onclick="mostrarCheckout()">FINALIZAR COMPRA</button>
+        </section>
+    </main>
+
+    <section id="vista-checkout" class="container hidden" style="background: white; color: #333; border-radius: 12px; padding: 30px;">
+        <h2>SIMULACIÓN DE PAGO Y DESPACHO</h2>
+        <form id="formulario-pago">
+            <input type="text" id="nom" placeholder="Nombre completo" required>
+            <input type="text" id="dir" placeholder="Dirección de envío" required>
+            <input type="email" id="correo" placeholder="Correo electrónico (ej@gmail.com)" required>
+            <input type="tel" id="tel" placeholder="Teléfono (9 dígitos)" pattern="[0-9]{9}" title="Debe contener solo 9 números" required>
+            <button type="submit" class="btn-rojo" style="width: 100%;">PROCESAR PAGO SEGURO</button>
+        </form>
+    </section>
+
+    <section id="vista-confirmacion" class="container hidden" style="background: white; color: #333; border-radius: 12px; padding: 40px;">
+        <h2 style="color: #27ae60;">¡MUCHAS GRACIAS POR TU COMPRA!</h2>
+        <p>Tu pedido ha sido procesado exitosamente.</p>
+        <div id="resumen-final" style="background: #f9f9f9; padding: 20px; border-radius: 10px; border: 1px solid #ddd; text-align: left; color: #333;">
+        </div>
+        <button class="btn-rojo" onclick="location.reload()">VOLVER AL INICIO</button>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@auth0/auth0-spa-js@1.20.1/dist/auth0-spa-js.production.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

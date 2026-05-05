@@ -1,0 +1,1 @@
+Eleccion: SQL. Justificacion: Se requiere integridad ACID para transacciones de productos electronicos y estructura relacional para usuarios e inventario.
