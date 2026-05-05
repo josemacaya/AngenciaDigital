@@ -1,1 +1,7 @@
 Eleccion: SQL. Justificacion: Se requiere integridad ACID para transacciones de productos electronicos y estructura relacional para usuarios e inventario.
+
+Como parte del análisis técnico del proyecto, se refuerza la importancia de seleccionar una arquitectura de base de datos adecuada para una tienda virtual. En este caso, una base de datos SQL resulta conveniente debido a que permite mantener la integridad de la información mediante tablas relacionadas, claves primarias, claves foráneas y transacciones.
+
+Además, se considera relevante aplicar medidas de seguridad como consultas parametrizadas y validaciones en el backend, ya que estas prácticas ayudan a prevenir vulnerabilidades comunes, como la inyección SQL, y permiten proteger los datos de usuarios, productos, pedidos y pagos.
+
+Este aporte complementa la fundamentación del proyecto, relacionando la arquitectura seleccionada con criterios de seguridad, eficiencia y confiabilidad.
